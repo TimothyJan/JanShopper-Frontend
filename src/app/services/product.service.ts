@@ -10,12 +10,19 @@ export class ProductService {
   private productsChangedSource = new Subject<void>();
   productsChanged$ = this.productsChangedSource.asObservable();
 
-  productID: number = 3;
+  productID: number = 10;
 
   products: Product[] = [
-    new Product(0, "john_doe", "john@example.com", "Password123!"),
-    new Product(1, "jane_doe", "jane@example.com", "Password123!"),
-    new Product(2, "admin", "admin@example.com", "Admin123!")
+    new Product(0, "Laptop", "High-performance laptop with 16GB RAM and 512GB SSD", 1200.00, 10, 0),
+    new Product(1, "Smartphone", "Latest smartphone with 128GB storage and 5G support", 800.00, 25, 0),
+    new Product(2, "Headphones", "Noise-cancelling over-ear headphones", 250.00, 30, 1),
+    new Product(3, "T-Shirt", "Cotton T-Shirt in various colors", 20.00, 50, 1),
+    new Product(4, "Jeans", "Noise-cancelling over-ear headphones", 250.00, 30, 1),
+    new Product(5, "Headphones", "Slim-fit jeans for men", 50.00, 40, 1),
+    new Product(6, "Sneakers", "Comfortable running shoes", 80.00, 20, 1),
+    new Product(7, "Chocolate Bar", "Dark chocolate bar with 70% cocoa", 5.00, 100, 2),
+    new Product(8, "Energy Drink", "Sugar-free energy drink", 3.00, 75, 2),
+    new Product(9, "Granola Bars", "Healthy granola bars with nuts and honey", 4.00, 60, 2),
   ];
 
   constructor() { }
@@ -37,7 +44,7 @@ export class ProductService {
 
   /** Post new Product */
   addProduct(product: Product): void {
-    let newProduct = new Product(this.productID++, product.productName, product.email, product.password);
+    let newProduct = new Product(this.productID++, product.name, product.description, product.price, product.stock, product.categoryId);
     this.products.push(newProduct);
     // console.log(this.products);
   }

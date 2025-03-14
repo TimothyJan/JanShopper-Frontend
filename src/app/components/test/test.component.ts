@@ -4,6 +4,8 @@ import { Category } from '../../models/category.model';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { UserRegistration } from '../../models/user.model';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-test',
@@ -17,15 +19,18 @@ import { UserRegistration } from '../../models/user.model';
 export class TestComponent implements OnInit{
   categorys: Category[] = [];
   users: UserRegistration[] = [];
+  products: Product[] = [];
 
   constructor(
     private _categoryService: CategoryService,
-    private _userService: UserService
+    private _userService: UserService,
+    private _productService: ProductService
   ) {}
 
   ngOnInit(): void {
-      this.getCategorys();
-      this.getUsers();
+    this.getCategorys();
+    this.getUsers();
+    this.getProducts();
   }
 
   getCategorys(): void {
@@ -34,5 +39,9 @@ export class TestComponent implements OnInit{
 
   getUsers(): void {
     this.users = this._userService.getUsers();
+  }
+
+  getProducts(): void {
+    this.products = this._productService.getProducts();
   }
 }
